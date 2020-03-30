@@ -1,16 +1,19 @@
 import { useContext, createContext } from "react";
 import { types, Instance, onSnapshot } from "mobx-state-tree";
 
-import {Playlist} from "./Playlist";
+import { Playlist } from "./Playlist";
+import { Artist } from "./Artist";
 
 const RootModel = types.model({
-  Playlist
+  Playlist,
+  Artist
 });
 
 export const rootStore = RootModel.create({
   // counter: {
   //   count: 0
   // },
+  Artist: {},
   Playlist: { items: [] }
 });
 
