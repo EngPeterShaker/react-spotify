@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       maxWidth: 345,
-      margin: '3em 40%'
+      margin: '3em 40%',
+      cursor : 'pointer'
     },
     media: {
       height: 0,
@@ -45,18 +46,18 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function CardItem(props: any) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  console.log('props', props)
+  // console.log('props', props)
 
-  const {name , href , images } = props.item ;
+  const {name , href , images , owner} = props.item ;
 
   return (
     <Card className={classes.root} >
       <CardHeader
-        // avatar={
-        //   <Avatar aria-label="recipe" className={classes.avatar}>
-        //     R
-        //   </Avatar>
-        // }
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+           <img src={images[0].url} alt={'img'}/>
+          </Avatar>
+        }
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
@@ -72,11 +73,11 @@ export default function CardItem(props: any) {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+         By : {owner.display_name }
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      {/* owner.display_name */}
+      {/* <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
@@ -93,7 +94,7 @@ export default function CardItem(props: any) {
         >
           <ExpandMoreIcon />
         </IconButton>
-      </CardActions>
+      </CardActions> */}
 
     </Card>
   );
